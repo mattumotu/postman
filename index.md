@@ -1,8 +1,9 @@
-Postman                        {#mainpage}
+Postman
 =======
 
 Postman is a light weight, object-oriented .Net SDK for sending emails
 
+[![Build Status](https://travis-ci.org/mattumotu/postman.svg?branch=master)](https://travis-ci.org/mattumotu/postman)
 
 Usage
 -----
