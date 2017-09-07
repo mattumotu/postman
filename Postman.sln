@@ -11,27 +11,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PostmanTest", "PostmanTest\PostmanTest.vbproj", "{0BFAAE84-77F8-48EE-8467-62C876F82607}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postman", "Postman\Postman.csproj", "{57E1AEA9-EFB2-48A3-A565-7024B25021EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postman.Interfaces", "Postman.Interfaces\Postman.Interfaces.csproj", "{8AF158B0-103F-475D-8217-E5C84CAFBCED}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = http://vla50:8080/tfs/visual%20studio%202010
-		SccProjectUniqueName0 = PostmanTest\\PostmanTest.vbproj
-		SccProjectName0 = PostmanTest
-		SccLocalPath0 = PostmanTest
-		SccProjectUniqueName1 = Postman.Interfaces\\Postman.Interfaces.csproj
-		SccProjectName1 = Postman.Interfaces
+		SccProjectUniqueName0 = Postman.Interfaces\\Postman.Interfaces.csproj
+		SccProjectName0 = Postman.Interfaces
 		SccLocalPath1 = Postman.Interfaces
-		SccProjectUniqueName2 = Postman\\Postman.csproj
-		SccProjectName2 = Postman
-		SccLocalPath2 = Postman
-		SccLocalPath3 = .
+		SccProjectUniqueName1 = Postman\\Postman.csproj
+		SccProjectName1 = Postman
+		SccLocalPath1 = Postman
+		SccLocalPath2 = .
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Postman.vsmdi
