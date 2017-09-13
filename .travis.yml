@@ -31,7 +31,7 @@ install:
   
 script:
   - xbuild /p:Configuration=Release Postman.sln
-  - mono ./testrunner/xunit.runners.*/tools/xunit.console.clr4.exe ./Postman.Tests/bin/Release/Postman.Tests.dll
+  - mono ./testrunner/xunit.runners.*/tools/xunit.console.exe ./Postman.Tests/bin/Release/Postman.Tests.dll
 
 # Generate and deploy documentation
 after_success:
