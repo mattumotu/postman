@@ -5,19 +5,56 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		doxygen.cfg = doxygen.cfg
 		index.md = index.md
+		Local.testsettings = Local.testsettings
 		namespaces.dox = namespaces.dox
+		Postman.vsmdi = Postman.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PostmanTest", "PostmanTest\PostmanTest.vbproj", "{0BFAAE84-77F8-48EE-8467-62C876F82607}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postman", "Postman\Postman.csproj", "{57E1AEA9-EFB2-48A3-A565-7024B25021EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postman.Interfaces", "Postman.Interfaces\Postman.Interfaces.csproj", "{8AF158B0-103F-475D-8217-E5C84CAFBCED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postman.Tests", "Postman.Tests\Postman.Tests.csproj", "{4898EFD7-5DDA-4BE2-94A5-DFAEB7C36A11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CC30C00D-E005-480E-B152-2A2195E47A2A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://vla50:8080/tfs/visual%20studio%202010
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PostmanTest\\PostmanTest.vbproj
+		SccProjectName1 = PostmanTest
+		SccLocalPath1 = PostmanTest
+		SccProjectUniqueName2 = Postman.Interfaces\\Postman.Interfaces.csproj
+		SccProjectName2 = Postman.Interfaces
+		SccLocalPath2 = Postman.Interfaces
+		SccProjectUniqueName3 = Postman\\Postman.csproj
+		SccProjectName3 = Postman
+		SccLocalPath3 = Postman
+		SccProjectUniqueName4 = Postman.Tests\\Postman.Tests.csproj
+		SccProjectName4 = Postman.Tests
+		SccLocalPath4 = Postman.Tests
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Postman.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BFAAE84-77F8-48EE-8467-62C876F82607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BFAAE84-77F8-48EE-8467-62C876F82607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BFAAE84-77F8-48EE-8467-62C876F82607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BFAAE84-77F8-48EE-8467-62C876F82607}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57E1AEA9-EFB2-48A3-A565-7024B25021EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{57E1AEA9-EFB2-48A3-A565-7024B25021EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57E1AEA9-EFB2-48A3-A565-7024B25021EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,6 +63,10 @@ Global
 		{8AF158B0-103F-475D-8217-E5C84CAFBCED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AF158B0-103F-475D-8217-E5C84CAFBCED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AF158B0-103F-475D-8217-E5C84CAFBCED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4898EFD7-5DDA-4BE2-94A5-DFAEB7C36A11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4898EFD7-5DDA-4BE2-94A5-DFAEB7C36A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4898EFD7-5DDA-4BE2-94A5-DFAEB7C36A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4898EFD7-5DDA-4BE2-94A5-DFAEB7C36A11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
