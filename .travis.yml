@@ -33,6 +33,8 @@ script:
   - xbuild /p:Configuration=Release Postman.sln
   - pwd
   - cd packages
+  - cd xunit.runner.console.2.1.0
+  - cd tools
   - pwd
   - ls
   - mono ./packages/xunit.runners.*/tools/xunit.console.exe ./Postman.Tests/bin/Release/Postman.Tests.dll
