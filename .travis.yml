@@ -37,7 +37,7 @@ script:
   - cd tools
   - pwd
   - ls
-  - mono ./packages/xunit.runners.2.1.0/tools/xunit.console.exe ./Postman.Tests/bin/Release/Postman.Tests.dll
+  - mono $TRAVIS_BUILD_DIR/packages/xunit.runners.2.1.0/tools/xunit.console.exe ./Postman.Tests/bin/Release/Postman.Tests.dll
 
 # Generate and deploy documentation
 after_success:
