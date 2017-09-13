@@ -10,8 +10,7 @@ var indexSectionsWithContent =
   0: "abcdehiprsu",
   1: "abcdehiprs",
   2: "p",
-  3: "abcdehiprsu",
-  4: "pr"
+  3: "abcdehiprsu"
 };
 
 var indexSectionNames =
@@ -19,8 +18,7 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "namespaces",
-  3: "functions",
-  4: "pages"
+  3: "functions"
 };
 
 function convertToId(search)
