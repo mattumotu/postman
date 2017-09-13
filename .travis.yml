@@ -32,7 +32,7 @@ install:
 script:
   - xbuild /p:Configuration=Release Postman.sln
   - pwd
-  - cs packages
+  - cd packages
   - pwd
   - ls
   - mono ./packages/xunit.runners.*/tools/xunit.console.exe ./Postman.Tests/bin/Release/Postman.Tests.dll
