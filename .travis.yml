@@ -28,6 +28,7 @@ language: csharp
 solution: Postman.sln
 install:
   - nuget restore Postman.sln
+  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
   
 script:
   - xbuild /p:Configuration=Release Postman.sln
@@ -42,7 +43,8 @@ script:
   - cd Release
   - pwd
   - ls
-  - mono $TRAVIS_BUILD_DIR/packages/xunit.runners.2.1.0/tools/xunit.console.exe $TRAVIS_BUILD_DIR/Postman.Tests/bin/Release/Postman.Tests.dll
+  #- mono $TRAVIS_BUILD_DIR/packages/xunit.runners.2.1.0/tools/xunit.console.exe $TRAVIS_BUILD_DIR/Postman.Tests/bin/Release/Postman.Tests.dll
+  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./Postman.Tests/bin/Release/Postman.Tests.dll
 
 # Generate and deploy documentation
 after_success:
