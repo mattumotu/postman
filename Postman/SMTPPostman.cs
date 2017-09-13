@@ -1,12 +1,12 @@
-﻿namespace Postman
+namespace Postman
 {
     using System.Collections.Generic;
     using System.Net.Mail;
 
     /// <summary>
-    /// An <see cref="Postman"/> sends a <see cref="IEnvelope"/> via an SMTP server
+    /// An <see cref="SMTPPostman"/> sends a <see cref="IEnvelope"/> via an SMTP server
     /// </summary>
-    public class Postman : IPostman
+    public class SMTPPostman : IPostman
     {
         /// <summary>
         /// Holds the SMTP host
@@ -14,7 +14,7 @@
         private readonly string host;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Postman" /> class with the specified SMTP host.
+        /// Initializes a new instance of the <see cref="SMTPPostman" /> class with the specified SMTP host.
         /// </summary>
         /// <param name="smtpHost">A string that contains an SMPT host</param>
         /// <example>
@@ -36,13 +36,13 @@
         /// IEnvelope exampleEnv = new Envelope(stamps, enclosures);
         ///
         /// // Create EmailPostman
-        /// IPostman postman = new Postman("my.smtp.host");
+        /// IPostman postman = new SMTPPostman("my.smtp.host");
         /// // Send Envelope
         /// postman.Send(exampleEnv);
         /// </code>
         /// </example>
         /// <example>
-        /// This example shows basic VB.net use of Postman
+        /// This example shows basic VB.net use of SMTPPostman
         /// <code>
         /// Imports System.Collections.Generic
         /// Imports Postman
@@ -67,12 +67,12 @@
         /// Dim exampleEnv As IEnvelope = New Envelope(stamps, enclosures)
         ///
         /// ' Create EmailPostman '
-        /// Dim postman As IPostman = New Postman("my.smtp.host")
+        /// Dim postman As IPostman = New SMTPPostman("my.smtp.host")
         /// ' Send Envelope '
         /// postman.Send(exampleEnv)
         /// </code>
         /// </example>
-        public Postman(string smtpHost)
+        public SMTPPostman(string smtpHost)
         {
             this.host = smtpHost;
         }
