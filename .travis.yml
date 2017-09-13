@@ -25,6 +25,10 @@ addons:
       - graphviz
 
 language: csharp
+solution: Postman.sln
+install:
+  - nuget restore Postman.sln
+  
 script:
   - xbuild /p:Configuration=Release Postman.sln
   - mono ./testrunner/xunit.runners.*/tools/xunit.console.clr4.exe ./Postman.Tests/bin/Release/Postman.Tests.dll
