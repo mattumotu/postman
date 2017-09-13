@@ -48,7 +48,7 @@
     <Compile Include="Enclosure\Attached.cs" />
     <Compile Include="Stamp\Bcc.cs" />
     <Compile Include="Stamp\Cc.cs" />
-    <Compile Include="Postman.cs" />
+    <Compile Include="SMTPPostman.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResource.cs" />
     <Compile Include="Enclosure\Html.cs" />
     <Compile Include="Envelope\Envelope.cs">
