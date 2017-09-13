@@ -12,23 +12,9 @@ env:
     - GH_REPO_NAME: postman
     - DOXYFILE: $TRAVIS_BUILD_DIR/doxygen.cfg
     - GH_REPO_REF: github.com/mattumotu/postman.git
-    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-    #   via the "travis encrypt" command using the project repo's public key
-    - secure: "DQCfzFMbERzMrEravd7FsgNkvqxa/ZAJxlmDEGwn3kuHUSBIPNarI5mId2rYidxGqL7doHdukN2Z47QmFm5/HJDECVCZb+ibHgGn4ChvZGzQD26Dz0NgWijZhhG/NEJ1p/1Hi9nniJ8bG/1M0gHXUqiOA7gUuxUCNdgryoAEF7oa08YQtBJE5/CVeXej9xbl7hdAaQacb78kpRnu4aAegmB1qTKrwO7x2PCOBO2JX+kPMb6m9yg6TTstuEb8X8yWDvMs0c41KmD6UKNGk+rLiW6fI570I0AcevBsSQ0sXezCo/V0j5WX50FKPwCGi3R5cAJ6hUZXjRnwhFV1SG+ihg0Hfxl++KcLHAGaHv3retVgEq7aYK+e9nx1XWjgH0EiTsEDDwY3l5xPtyOEHkJCLPLEdNBPLIh2ApDvTwnyvWxBpyF+nohAOz5ZE8lrIoStZfqtQIAjKqpf4VvlfSpKB+RQRj/CUlOeNPZXgUHwhRqNa8W7uIc45gROJF8eMknhU7Hcr3ewcPMFdBmsDowmA84XTQ4cKl1C9oaqckNaQcZlPUy1mOMwY5E2oiMEXaKSQzaUZJ+VwLKstKr4f/SxfRIbTLcvqP8hjgSeYxiAdLoJBfdDwvSQGkz4ecbcvEZY77EtSMrg0LcXfYzSSb704PgcV2PMwtwSvt7aSqW+I9c="
-
-before_install:
-      - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 
 # Install dependencies
 addons:
-  coverity_scan:
-    project:
-      name: "mattumotu/postman"
-      description: "Build submitted via Travis CI"
-    notification_email: mattumotu@gmail.com
-    build_command_prepend: "xbuild /t:Clean"
-    build_command:   "xbuild /t:Rebuild /p:Configuration=Release Postman.sln"
-    branch_pattern: master
   apt:
     packages:
       - doxygen
