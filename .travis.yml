@@ -26,8 +26,8 @@ addons:
       name: "mattumotu/postman"
       description: "Build submitted via Travis CI"
     notification_email: mattumotu@gmail.com
-    build_command_prepend: "msbuild /t:Clean"
-    build_command:   "msbuild /t:Rebuild"
+    build_command_prepend: "xbuild /t:Clean"
+    build_command:   "xbuild /t:Rebuild /p:Configuration=Release Postman.sln"
     branch_pattern: master
   apt:
     packages:
