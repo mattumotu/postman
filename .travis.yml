@@ -31,7 +31,7 @@ install:
   - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
   
 script:
-  - xbuild /p:Configuration=Release Postman.sln
+  - xbuild /p:Configuration=Debug Postman.sln
   - pwd
   - ls
   - cd Postman.Tests
