@@ -32,15 +32,13 @@ install:
   
 script:
   - xbuild /p:Configuration=Debug Postman.sln
+  - cd $TRAVIS_BUILD_DIR/packages/xunit.runners.2.1.0/tools/
   - pwd
   - ls
-  - cd Postman.Tests
+  - cd TRAVIS_BUILD_DIR/Postman.Tests/bin/Release/
   - pwd
   - ls
-  - cd bin
-  - pwd
-  - ls
-  - cd Release
+  - cd TRAVIS_BUILD_DIR/Postman.Tests/bin/Debug/
   - pwd
   - ls
   #- mono $TRAVIS_BUILD_DIR/packages/xunit.runners.2.1.0/tools/xunit.console.exe $TRAVIS_BUILD_DIR/Postman.Tests/bin/Release/Postman.Tests.dll
