@@ -35,10 +35,10 @@ script:
   - cd $TRAVIS_BUILD_DIR/packages/xunit.runners.2.1.0/tools/
   - pwd
   - ls
-  - cd TRAVIS_BUILD_DIR/Postman.Tests/bin/Release/
+  - cd $TRAVIS_BUILD_DIR/Postman.Tests/bin/Release/
   - pwd
   - ls
-  - cd TRAVIS_BUILD_DIR/Postman.Tests/bin/Debug/
+  - cd $TRAVIS_BUILD_DIR/Postman.Tests/bin/Debug/
   - pwd
   - ls
   #- mono $TRAVIS_BUILD_DIR/packages/xunit.runners.2.1.0/tools/xunit.console.exe $TRAVIS_BUILD_DIR/Postman.Tests/bin/Release/Postman.Tests.dll
