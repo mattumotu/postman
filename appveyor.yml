@@ -1,0 +1,26 @@
+version: 1.0.{build}
+
+branches:
+  only:
+  - master
+  - appveyor
+
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: +rUCy9KXXcle8NAytgkaGdE9kO6vXawtJVMy6QPCjnrWbgjd3lyQ5D9vBh2LDDOr
+
+before_build:
+- cmd: >-
+    nuget restore
+    nuget install xunit.runners -Version 1.9.2 -OutputDirectory tools
+    nuget install OpenCover -Version 4.6.519 -OutputDirectory tools
+    nuget install coveralls.net -Version 0.412.0 -OutputDirectory tools
+
+build:
+  project: Postman.sln
+  verbosity: minimal
+
+after_test:
+  - ps: >-
+  .\tools\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"./tools/xunit.runners.1.9.2/tools/xunit.console.clr4.exe" -targetargs:"./Postman.Tests/bin/Debug/Postman.Tests.dll /noshadow"   -filter:\"+[Postman*]*\" -output:opencoverCoverage.xml
+  .\tools\coveralls.net.0.412\tools\csmacnz.Coveralls.exe --opencover -i --repoToken $env:COVERALLS_REPO_TOKEN --jobId $env:APPVEYOR_BUILD_NUMBER opencoverCoverage.xml 
