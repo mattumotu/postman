@@ -10,11 +10,10 @@ environment:
     secure: +rUCy9KXXcle8NAytgkaGdE9kO6vXawtJVMy6QPCjnrWbgjd3lyQ5D9vBh2LDDOr
 
 before_build:
-- cmd: >-
-    nuget restore
-    nuget install xunit.runners -Version 1.9.2 -OutputDirectory tools
-    nuget install OpenCover -Version 4.6.519 -OutputDirectory tools
-    nuget install coveralls.net -Version 0.412.0 -OutputDirectory tools
+- cmd: nuget restore
+- cmd: nuget install xunit.runners -Version 1.9.2 -OutputDirectory tools
+- cmd: nuget install OpenCover -Version 4.6.519 -OutputDirectory tools
+- cmd: nuget install coveralls.net -Version 0.412.0 -OutputDirectory tools
 
 build:
   project: Postman.sln
