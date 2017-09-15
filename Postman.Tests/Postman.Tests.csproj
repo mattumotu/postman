@@ -64,6 +64,33 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Stamp\CcStampTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Stamp\SubjectStampTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Stamp\RecipientStampTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Stamp\SenderStampTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enclosure\AttachedEnclosureTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enclosure\PlainEnclosureTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enclosure\HtmlEnclosureTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Envelope\DebugEnvelopeTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Envelope\EnvelopeTest.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
