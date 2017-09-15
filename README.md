@@ -4,6 +4,7 @@ Postman is a C#.Net implementation of the wonderful [jcabi-email](https://github
 More details are here: [email.jcabi.com](http://email.jcabi.com/).
 
 [![Build Status](https://travis-ci.org/mattumotu/postman.svg?branch=master)](https://travis-ci.org/mattumotu/postman)
+[![Coverage Status](https://coveralls.io/repos/github/mattumotu/postman/badge.svg?branch=master)](https://coveralls.io/github/mattumotu/postman?branch=master)
 
 Usage
 -----
