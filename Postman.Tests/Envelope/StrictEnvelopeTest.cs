@@ -11,12 +11,6 @@
     /// </summary>
     public class StrictEnvelopeTest
     {
-        //TODO: Test all ok
-        //TODO: Test missing To throws
-        //TODO: Test missing From throws
-        //TODO: Test missing Subject throws
-        //TODO: Test missing enclosures throws
-
         /// <summary>
         /// Check StrictEnvelope works with all required stamps and enclosures
         /// </summary>
@@ -58,5 +52,91 @@
 
             Assert.Contains(expectedPlainContent, actualContent);
         }
+
+        ///  <summary>
+        ///  StrictEnvelope without a recipient throws
+        ///  </summary>
+        [Fact]
+        public void StrictEnvelope_NoRecipient_Throws()
+        {
+            // Arrange
+            string expectedSender = "sender@test.com";
+            string expectedSubject = "original subject";
+            string expectedPlainContent = "expected plain content";
+
+            ICollection<IStamp> stmps = new List<IStamp>();
+            stmps.Add(new Stamp.Sender(expectedSender));
+            stmps.Add(new Stamp.Subject(expectedSubject));
+
+            ICollection<IEnclosure> encs = new List<IEnclosure>();
+            encs.Add(new Enclosure.Plain(expectedPlainContent));
+
+            IEnvelope target = new Envelope.StrictEnvelope(new Envelope.Envelope(stmps, encs));
+            MailMessage msg;
+
+            // Act
+            System.Exception ex = Assert.Throws<System.InvalidOperationException>(() => msg = target.Unwrap());
+
+            // Assert
+            Assert.Equal("list of recipients is empty", ex.Message);
+        }
+
+        ///  <summary>
+        ///  StrictEnvelope without a sender throws
+        ///  </summary>
+        [Fact]
+        public void StrictEnvelope_NoSender_Throws()
+        {
+            // Arrange
+            string expectedRecipient = "recipient@test.com";
+            string expectedSubject = "original subject";
+            string expectedPlainContent = "expected plain content";
+
+            ICollection<IStamp> stmps = new List<IStamp>();
+            stmps.Add(new Stamp.Recipient(expectedRecipient));
+            stmps.Add(new Stamp.Subject(expectedSubject));
+
+            ICollection<IEnclosure> encs = new List<IEnclosure>();
+            encs.Add(new Enclosure.Plain(expectedPlainContent));
+
+            IEnvelope target = new Envelope.StrictEnvelope(new Envelope.Envelope(stmps, encs));
+            MailMessage msg;
+
+            // Act
+            System.Exception ex = Assert.Throws<System.InvalidOperationException>(() => msg = target.Unwrap());
+
+            // Assert
+            Assert.Equal("sender is Nothing", ex.Message);
+        }
+
+        ///  <summary>
+        ///  StrictEnvelope without a subject throws
+        ///  </summary>
+        [Fact]
+        public void StrictEnvelope_NoSubject_Throws()
+        {
+            // Arrange
+            string expectedRecipient = "recipient@test.com";
+            string expectedSender = "sender@test.com";
+            string expectedPlainContent = "expected plain content";
+
+            ICollection<IStamp> stmps = new List<IStamp>();
+            stmps.Add(new Stamp.Recipient(expectedRecipient));
+            stmps.Add(new Stamp.Sender(expectedSender));
+
+            ICollection<IEnclosure> encs = new List<IEnclosure>();
+            encs.Add(new Enclosure.Plain(expectedPlainContent));
+
+            IEnvelope target = new Envelope.StrictEnvelope(new Envelope.Envelope(stmps, encs));
+            MailMessage msg;
+
+            // Act
+            System.Exception ex = Assert.Throws<System.InvalidOperationException>(() => msg = target.Unwrap());
+
+            // Assert
+            Assert.Equal("subject is Nothing or empty", ex.Message);
+        }
+
+        //TODO: Test missing enclosures throws
     }
 }
