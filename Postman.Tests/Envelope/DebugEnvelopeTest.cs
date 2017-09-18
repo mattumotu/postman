@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Net.Mail;
+    using System.Net.Mime;
     using Postman.Stamp;
     using Xunit;
 
@@ -71,8 +72,14 @@
             stmps.Add(new Recipient(originalRcpt));
             stmps.Add(new Subject(originalSubject));
 
+            string expectedContentId = "expectedContentId";
+            ContentType expectedContentType = new ContentType("img/jpeg");
+            IEmbeddedResource expectedEmbeddedResource = new EmbeddedResource.EmbeddedResource(new System.IO.MemoryStream(), expectedContentType, expectedContentId);
+            ICollection<IEmbeddedResource> resList = new List<IEmbeddedResource>();
+            resList.Add(expectedEmbeddedResource);
+
             ICollection<IEnclosure> encs = new List<IEnclosure>();
-            encs.Add(new Enclosure.Html(expectedContent)); //TODO: embedded resource
+            encs.Add(new Enclosure.Html(expectedContent, resList));
 
             IEnvelope origin = new Envelope.Envelope(stmps, encs);
             MailAddress expectedRcpt = new MailAddress("newrcpt@test.com");
@@ -97,6 +104,10 @@
             Assert.Contains(originalRcpt, actualContent);
             Assert.Contains(originalSubject, actualContent);
             Assert.Contains(expectedContent, actualContent);
+
+            Assert.Equal(1, msg.AlternateViews[0].LinkedResources.Count);
+            Assert.Equal(expectedContentId, msg.AlternateViews[0].LinkedResources[0].ContentId);
+            Assert.Equal(expectedContentType, msg.AlternateViews[0].LinkedResources[0].ContentType);
         }
 
         /// <summary>
