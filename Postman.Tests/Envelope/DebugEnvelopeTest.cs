@@ -16,18 +16,63 @@
         /// A test for DebugEnvelope Rcpt with a Plain encolsure
         /// </summary>
         [Fact]
-        public void DebugEnvelope_EncPlain_NewSender()
+        public void DebugEnvelope_EncPlain()
         {
             // Arrange
             string originalRcpt = "test@test.com";
+            string originalSubject = "original subject";
+            string expectedContent = "expectedContent";
 
             ICollection<IStamp> stmps = new List<IStamp>();
             stmps.Add(new Recipient(originalRcpt));
-
-            string expectedContent = "expectedContent";
+            stmps.Add(new Subject(originalSubject));
 
             ICollection<IEnclosure> encs = new List<IEnclosure>();
             encs.Add(new Enclosure.Plain(expectedContent));
+
+            IEnvelope origin = new Envelope.Envelope(stmps, encs);
+
+            MailAddress expectedRcpt = new MailAddress("newrcpt@test.com");
+            IEnvelope target = new Envelope.DebugEnvelope(origin, expectedRcpt.Address);
+            MailMessage msg;
+
+            // Act
+            msg = target.Unwrap();
+
+            // Assert
+            Assert.Equal(1, msg.To.Count);
+            Assert.Equal(expectedRcpt, msg.To[0]);
+            Assert.Contains(originalSubject, msg.Subject);
+            Assert.Equal(1, msg.AlternateViews.Count);
+
+            string actualContent;
+            using (var sr = new StreamReader(msg.AlternateViews[0].ContentStream))
+            {
+                actualContent = sr.ReadToEnd();
+            }
+
+            Assert.Contains(originalRcpt, actualContent);
+            Assert.Contains(originalSubject, actualContent);
+            Assert.Contains(expectedContent, actualContent);
+        }
+
+        /// <summary>
+        /// A test for DebugEnvelope Rcpt with a HTML encolsure and embedded resource
+        /// </summary>
+        [Fact]
+        public void DebugEnvelope_HtmlPlain()
+        {
+            // Arrange
+            string originalRcpt = "test@test.com";
+            string originalSubject = "original subject";
+            string expectedContent = "<p>expectedContent</p>";
+
+            ICollection<IStamp> stmps = new List<IStamp>();
+            stmps.Add(new Recipient(originalRcpt));
+            stmps.Add(new Subject(originalSubject));
+
+            ICollection<IEnclosure> encs = new List<IEnclosure>();
+            encs.Add(new Enclosure.Html(expectedContent)); //TODO: embedded resource
 
             IEnvelope origin = new Envelope.Envelope(stmps, encs);
             MailAddress expectedRcpt = new MailAddress("newrcpt@test.com");
@@ -40,6 +85,7 @@
             // Assert
             Assert.Equal(1, msg.To.Count);
             Assert.Equal(expectedRcpt, msg.To[0]);
+            Assert.Contains(originalSubject, msg.Subject);
             Assert.Equal(1, msg.AlternateViews.Count);
 
             string actualContent;
@@ -48,66 +94,33 @@
                 actualContent = sr.ReadToEnd();
             }
 
-            Assert.True(actualContent.Contains(originalRcpt));
-            Assert.True(actualContent.Contains(expectedContent));
+            Assert.Contains(originalRcpt, actualContent);
+            Assert.Contains(originalSubject, actualContent);
+            Assert.Contains(expectedContent, actualContent);
         }
 
         /// <summary>
-        /// A test for DebugEnvelope Rcpt with a Plain encolsure
+        /// A test for DebugEnvelope Rcpt with a CC stamp & plain Env
         /// </summary>
         [Fact]
-        public void DebugEnvelope_EncPlain_NewSubject()
+        public void DebugEnvelope_StampCC_EncPlain()
         {
             // Arrange
-            ICollection<IStamp> stmps = new List<IStamp>();
             string originalRcpt = "test@test.com";
-            stmps.Add(new Recipient(originalRcpt));
+            string originalCC = "cc@test.com";
             string originalSubject = "original subject";
+            string expectedContent = "expectedContent";
+
+            ICollection<IStamp> stmps = new List<IStamp>();
+            stmps.Add(new Recipient(originalRcpt));
+            stmps.Add(new Cc(originalCC));
             stmps.Add(new Subject(originalSubject));
 
             ICollection<IEnclosure> encs = new List<IEnclosure>();
-            string expectedContent = "expectedContent";
             encs.Add(new Enclosure.Plain(expectedContent));
 
             IEnvelope origin = new Envelope.Envelope(stmps, encs);
-            MailAddress expectedRcpt = new MailAddress("newrcpt@test.com");
-            IEnvelope target = new Envelope.DebugEnvelope(origin, expectedRcpt.Address);
-            MailMessage msg;
 
-            // Act
-            msg = target.Unwrap();
-
-            // Assert
-            Assert.Equal(1, msg.AlternateViews.Count);
-
-            string actualContent;
-            using (var sr = new StreamReader(msg.AlternateViews[0].ContentStream))
-            {
-                actualContent = sr.ReadToEnd();
-            }
-
-            Assert.True(actualContent.Contains(string.Format("Subject: {0}", originalSubject)));
-            Assert.True(actualContent.Contains(expectedContent));
-        }
-
-        /// <summary>
-        /// A test for DebugEnvelope Rcpt with a HTML encolsure
-        /// </summary>
-        [Fact]
-        public void DebugEnvelope_HtmlPlain_NewSender()
-        {
-            // Arrange
-            string originalRcpt = "test@test.com";
-
-            ICollection<IStamp> stmps = new List<IStamp>();
-            stmps.Add(new Recipient(originalRcpt));
-
-            string expectedContent = "<p>expectedContent</p>";
-
-            ICollection<IEnclosure> encs = new List<IEnclosure>();
-            encs.Add(new Enclosure.Html(expectedContent));
-
-            IEnvelope origin = new Envelope.Envelope(stmps, encs);
             MailAddress expectedRcpt = new MailAddress("newrcpt@test.com");
             IEnvelope target = new Envelope.DebugEnvelope(origin, expectedRcpt.Address);
             MailMessage msg;
@@ -118,6 +131,8 @@
             // Assert
             Assert.Equal(1, msg.To.Count);
             Assert.Equal(expectedRcpt, msg.To[0]);
+            Assert.Contains(originalSubject, msg.Subject);
+            Assert.Equal(0, msg.CC.Count);
             Assert.Equal(1, msg.AlternateViews.Count);
 
             string actualContent;
@@ -126,28 +141,34 @@
                 actualContent = sr.ReadToEnd();
             }
 
-            Assert.True(actualContent.Contains(originalRcpt));
-            Assert.True(actualContent.Contains(expectedContent));
+            Assert.Contains(originalRcpt, actualContent);
+            Assert.Contains(originalCC, actualContent);
+            Assert.Contains(originalSubject, actualContent);
+            Assert.Contains(expectedContent, actualContent);
         }
 
         /// <summary>
-        /// A test for DebugEnvelope Rcpt with a HTML encolsure
+        /// A test for DebugEnvelope Rcpt with a BCC stamp & plain Env
         /// </summary>
         [Fact]
-        public void DebugEnvelope_EncHtml_NewSubject()
+        public void DebugEnvelope_StampBCC_EncPlain()
         {
             // Arrange
-            ICollection<IStamp> stmps = new List<IStamp>();
             string originalRcpt = "test@test.com";
-            stmps.Add(new Recipient(originalRcpt));
+            string originalBCC = "bcc@test.com";
             string originalSubject = "original subject";
+            string expectedContent = "expectedContent";
+
+            ICollection<IStamp> stmps = new List<IStamp>();
+            stmps.Add(new Recipient(originalRcpt));
+            stmps.Add(new Bcc(originalBCC));
             stmps.Add(new Subject(originalSubject));
 
             ICollection<IEnclosure> encs = new List<IEnclosure>();
-            string expectedContent = "<p>expectedContent</p>";
-            encs.Add(new Enclosure.Html(expectedContent));
+            encs.Add(new Enclosure.Plain(expectedContent));
 
             IEnvelope origin = new Envelope.Envelope(stmps, encs);
+
             MailAddress expectedRcpt = new MailAddress("newrcpt@test.com");
             IEnvelope target = new Envelope.DebugEnvelope(origin, expectedRcpt.Address);
             MailMessage msg;
@@ -156,6 +177,10 @@
             msg = target.Unwrap();
 
             // Assert
+            Assert.Equal(1, msg.To.Count);
+            Assert.Equal(expectedRcpt, msg.To[0]);
+            Assert.Contains(originalSubject, msg.Subject);
+            Assert.Equal(0, msg.Bcc.Count);
             Assert.Equal(1, msg.AlternateViews.Count);
 
             string actualContent;
@@ -164,12 +189,12 @@
                 actualContent = sr.ReadToEnd();
             }
 
-            Assert.True(actualContent.Contains(string.Format("Subject: <i>{0}</i>", originalSubject)));
-            Assert.True(actualContent.Contains(expectedContent));
+            Assert.Contains(originalRcpt, actualContent);
+            Assert.Contains(originalBCC, actualContent);
+            Assert.Contains(originalSubject, actualContent);
+            Assert.Contains(expectedContent, actualContent);
         }
 
-        //TODO: Test cc stamp
-
-        //TODO: Test bcc stamp
+        //TODO: Test attachments
     }
 }
