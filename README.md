@@ -3,9 +3,8 @@
 Postman is a C#.Net implementation of the wonderful [jcabi-email](https://github.com/jcabi/jcabi-email) created by [Yegor Bugayenko](https://github.com/yegor256)
 More details are here: [email.jcabi.com](http://email.jcabi.com/).
 
-[![Build Status](https://travis-ci.org/mattumotu/postman.svg?branch=master)](https://travis-ci.org/mattumotu/postman)
-[![Build status](https://ci.appveyor.com/api/projects/status/o372hjhj2gu7birg?svg=true)](https://ci.appveyor.com/project/mattumotu/postman)
-[![Coverage Status](https://coveralls.io/repos/github/mattumotu/postman/badge.svg?branch=master)](https://coveralls.io/github/mattumotu/postman?branch=master)
+[![AppVeyor](https://img.shields.io/appveyor/ci/mattumotu/postman.svg?maxAge=3600)](https://ci.appveyor.com/project/mattumotu/postman)
+[![Coverage Status](https://img.shields.io/coveralls/mattumotu/postman/master.svg?maxAge=3600)](https://coveralls.io/github/mattumotu/postman?branch=master)
 
 Usage
 -----
