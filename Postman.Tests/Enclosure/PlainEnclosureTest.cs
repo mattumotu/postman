@@ -1,4 +1,4 @@
-﻿namespace Postman.Tests.Stamp
+﻿namespace Postman.Tests
 {
     using System.IO;
     using System.Net.Mail;

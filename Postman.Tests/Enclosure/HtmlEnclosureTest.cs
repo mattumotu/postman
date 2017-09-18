@@ -1,4 +1,4 @@
-﻿namespace Postman.Tests.Stamp
+﻿namespace Postman.Tests
 {
     using System.Collections.Generic;
     using System.IO;
@@ -41,7 +41,7 @@
         /// A test for HtmlEnclosure Constructor
         /// </summary>
         [Fact]
-        public void HtmlEnclosureConstructorTest1()
+        public void HtmlEnclosureWithEmbeddedResource()
         {
             // Arrange
             int expectedAltViewsCount = 1;
