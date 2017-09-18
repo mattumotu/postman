@@ -37,7 +37,7 @@
             ICollection<IEnclosure> encs = new List<IEnclosure>();
             encs.Add(new Enclosure.Plain(expectedPlainContent));
 
-            IEnvelope target = new Envelope.Envelope(stmps, encs);
+            IEnvelope target = new Envelope.StrictEnvelope(new Envelope.Envelope(stmps, encs));
             MailMessage msg;
 
             // Act
