@@ -18,9 +18,7 @@
         public void MIMEEnvelope_NoStamps_NoEnclosures()
         {
             // Arrange
-            ICollection<IStamp> stmps = new List<IStamp>();
-            ICollection<IEnclosure> encs = new List<IEnclosure>();
-            IEnvelope target = new Envelope.Envelope(stmps, encs);
+            IEnvelope target = new Envelope.Envelope();
             MailMessage msg;
 
             // Act
@@ -46,8 +44,7 @@
             ICollection<IStamp> stmps = new List<IStamp>();
             string expectedSubject = "expectedSubject";
             stmps.Add(new Subject(expectedSubject));
-            ICollection<IEnclosure> encs = new List<IEnclosure>();
-            IEnvelope target = new Envelope.Envelope(stmps, encs);
+            IEnvelope target = new Envelope.Envelope(stmps);
             MailMessage msg;
 
             // Act
@@ -69,11 +66,10 @@
         public void MIMEEnvelope_NoStamps_OneEnclosures()
         {
             // Arrange
-            ICollection<IStamp> stmps = new List<IStamp>();
             ICollection<IEnclosure> encs = new List<IEnclosure>();
             string expectedContent = "expectedContent";
             encs.Add(new Enclosure.Plain(expectedContent));
-            IEnvelope target = new Envelope.Envelope(stmps, encs);
+            IEnvelope target = new Envelope.Envelope(encs);
             MailMessage msg;
 
             // Act
