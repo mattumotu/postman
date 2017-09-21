@@ -1,7 +1,8 @@
-namespace Postman
+﻿namespace Postman
 {
     using System.Collections.Generic;
     using System.Net.Mail;
+    using Postman.Interfaces;
 
     /// <summary>
     /// An <see cref="SMTPPostman"/> sends a <see cref="IEnvelope"/> via an SMTP server
