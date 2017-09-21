@@ -67,6 +67,7 @@
     <Compile Include="Stamp\Subject.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Postman.nuspec" />
     <None Include="Settings.StyleCop" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
