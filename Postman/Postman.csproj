@@ -46,6 +46,11 @@
   <ItemGroup>
     <Compile Include="Envelope\DebugEnvelope.cs" />
     <Compile Include="Enclosure\Attached.cs" />
+    <Compile Include="Interfaces\IEmbeddedResource.cs" />
+    <Compile Include="Interfaces\IEnclosure.cs" />
+    <Compile Include="Interfaces\IEnvelope.cs" />
+    <Compile Include="Interfaces\IPostman.cs" />
+    <Compile Include="Interfaces\IStamp.cs" />
     <Compile Include="Stamp\Bcc.cs" />
     <Compile Include="Stamp\Cc.cs" />
     <Compile Include="SMTPPostman.cs" />
@@ -63,12 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Settings.StyleCop" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Postman.Interfaces\Postman.Interfaces.csproj">
-      <Project>{8AF158B0-103F-475D-8217-E5C84CAFBCED}</Project>
-      <Name>Postman.Interfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,7 @@
 ﻿namespace Postman.Stamp
 {
     using System.Net.Mail;
+    using Postman.Interfaces;
 
     /// <summary>
     /// Represents a subject stamp

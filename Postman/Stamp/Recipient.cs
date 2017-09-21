@@ -2,6 +2,7 @@
 {
     using System;
     using System.Net.Mail;
+    using Postman.Interfaces;
 
     /// <summary>
     /// Represents an email's Recipient(s)
@@ -47,7 +48,8 @@
         /// <param name="dispName">a string containing a display name</param>
         public Recipient(string addr, string dispName)
             : this(new MailAddress(addr, dispName))
-        { }
+        {
+        }
 
         /// <summary>
         /// Attach this instance to the specified message

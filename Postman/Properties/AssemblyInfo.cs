@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Postman")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyDescription("a light weight, object-oriented .Net SDK for sending emails")]
+[assembly: AssemblyConfiguration("Release")]
 [assembly: AssemblyCompany("DDTS")]
 [assembly: AssemblyProduct("Postman")]
-[assembly: AssemblyCopyright("Copyright © DDTS 2015")]
+[assembly: AssemblyCopyright("Copyright © 2017, Matt Phillips")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

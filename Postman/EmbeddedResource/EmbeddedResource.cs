@@ -3,9 +3,10 @@
     using System.IO;
     using System.Net.Mail;
     using System.Net.Mime;
+    using Postman.Interfaces;
 
     /// <summary>
-    /// An <see cref="IEmbeddedResource"/> which can be embedded within a <see cref="Postman.Enclosure.Html"/>
+    /// An <see cref="IEmbeddedResource"/> which can be embedded within a <see cref="SMTPPostman.Enclosure.Html"/>
     /// </summary>
     public class EmbeddedResource : IEmbeddedResource
     {

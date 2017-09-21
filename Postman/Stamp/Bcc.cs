@@ -1,6 +1,7 @@
 ﻿namespace Postman.Stamp
 {
     using System.Net.Mail;
+    using Postman.Interfaces;
 
     /// <summary>
     /// Represents a blind carbon copy stamp
@@ -43,7 +44,8 @@
         /// <param name="dispName">a string holding the display name to be bcc'd</param>
         public Bcc(string addr, string dispName)
             : this(new MailAddress(addr, dispName))
-        { }
+        {
+        }
 
         /// <summary>
         /// Attach this instance to a System.Net.Mail.MailMessage

@@ -1,6 +1,7 @@
 ﻿namespace Postman.Stamp
 {
     using System.Net.Mail;
+    using Postman.Interfaces;
 
     /// <summary>
     /// Represents a sender stamp
@@ -37,7 +38,8 @@
         /// <param name="dispName">a string containing a display name</param>
         public Sender(string addr, string dispName)
             : this(new MailAddress(addr, dispName))
-        { }
+        {
+        }
 
         /// <summary>
         /// Attach this instance to the specified message

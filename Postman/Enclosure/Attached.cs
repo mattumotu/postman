@@ -1,6 +1,7 @@
 ﻿namespace Postman.Enclosure
 {
     using System.Net.Mail;
+    using Postman.Interfaces;
 
     /// <summary>
     /// Represents and attached enclosure

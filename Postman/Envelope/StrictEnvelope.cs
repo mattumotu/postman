@@ -2,6 +2,7 @@
 {
     using System;
     using System.Net.Mail;
+    using Postman.Interfaces;
 
     /// <summary>
     /// Represents an envelope with strict criteria for unwrapping
