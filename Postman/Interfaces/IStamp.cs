@@ -1,4 +1,4 @@
-﻿namespace Postman
+﻿namespace Postman.Interfaces
 {
     /// <summary>
     /// An <see cref="IStamp"/> can be applied to an <see cref="IEnvelope"/>

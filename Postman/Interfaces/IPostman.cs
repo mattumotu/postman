@@ -1,4 +1,4 @@
-﻿namespace Postman
+﻿namespace Postman.Interfaces
 {
     /// <summary>
     /// An <see cref="IPostman"/> sends <see cref="IEnvelope"/>

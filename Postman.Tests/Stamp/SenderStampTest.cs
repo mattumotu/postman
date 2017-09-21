@@ -1,11 +1,12 @@
 ﻿namespace Postman.Tests
 {
     using System.Net.Mail;
+    using Postman.Interfaces;
     using Postman.Stamp;
     using Xunit;
 
     /// <summary>
-    ///  This is a test class for SenderStamp and is intended to contain all SenderStamp Unit Tests
+    /// This is a test class for SenderStamp and is intended to contain all SenderStamp Unit Tests
     /// </summary>
     public class SenderStampTest
     {
@@ -67,9 +68,9 @@
             Assert.Equal(expectedAddr.DisplayName, msg.Sender.DisplayName);
         }
 
-        ///  <summary>
-        ///  A test for SenderStamp Contructor with multiple addresses
-        ///  </summary>
+        /// <summary>
+        /// A test for SenderStamp Contructor with multiple addresses
+        /// </summary>
         [Fact]
         public void MultipleSendersThrowsException()
         {

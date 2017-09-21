@@ -1,4 +1,4 @@
-﻿namespace Postman
+﻿namespace Postman.Interfaces
 {
     /// <summary>
     /// An <see cref="IEmbeddedResource"/> can be embedded within an HTML Enclosure

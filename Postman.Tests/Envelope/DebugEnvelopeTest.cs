@@ -4,6 +4,7 @@
     using System.IO;
     using System.Net.Mail;
     using System.Net.Mime;
+    using Postman.Interfaces;
     using Postman.Stamp;
     using Xunit;
 

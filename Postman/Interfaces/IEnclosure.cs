@@ -1,4 +1,4 @@
-﻿namespace Postman
+﻿namespace Postman.Interfaces
 {
     /// <summary>
     /// An <see cref="IEnclosure"/> can be included in an <see cref="IEnvelope"/>

@@ -5,6 +5,7 @@
     using System.IO;
     using System.Net.Mail;
     using System.Net.Mime;
+    using Postman.Interfaces;
 
     /// <summary>
     /// Accepts an IEnvelope replacing recipient and dropping cc and bcc stamps
@@ -102,6 +103,7 @@
                         {
                             debugPlain += Environment.NewLine + sr.ReadToEnd();
                         }
+
                         encList.Add(new Enclosure.Plain(debugPlain));
                         break;
                 }

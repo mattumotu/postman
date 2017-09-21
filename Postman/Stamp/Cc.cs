@@ -1,6 +1,7 @@
 ﻿namespace Postman.Stamp
 {
     using System.Net.Mail;
+    using Postman.Interfaces;
 
     /// <summary>
     /// Represents a carbon copy stamp
@@ -43,7 +44,8 @@
         /// <param name="dispName">a string holding the display name to be cc'd</param>
         public Cc(string addr, string dispName)
             : this(new MailAddress(addr, dispName))
-        { }
+        {
+        }
 
         /// <summary>
         /// Attach this instance to a System.Net.Mail.MailMessage

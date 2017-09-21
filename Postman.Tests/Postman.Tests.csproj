@@ -53,10 +53,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Postman.Interfaces\Postman.Interfaces.csproj">
-      <Project>{8AF158B0-103F-475D-8217-E5C84CAFBCED}</Project>
-      <Name>Postman.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Postman\Postman.csproj">
       <Project>{57E1AEA9-EFB2-48A3-A565-7024B25021EA}</Project>
       <Name>Postman</Name>
