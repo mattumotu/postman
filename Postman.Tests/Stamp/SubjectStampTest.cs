@@ -1,12 +1,13 @@
 ﻿namespace Postman.Tests
 {
     using System.Net.Mail;
+    using Postman.Interfaces;
     using Postman.Stamp;
     using Xunit;
 
-    ///  <summary>
-    ///  This is a test class for SubjectStamp and is intended to contain all SubjectStamp Unit Tests
-    ///  </summary>
+    /// <summary>
+    /// This is a test class for SubjectStamp and is intended to contain all SubjectStamp Unit Tests
+    /// </summary>
     public class SubjectStampTest
     {
         /// <summary>

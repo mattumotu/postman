@@ -4,6 +4,7 @@
     using System.IO;
     using System.Net.Mail;
     using System.Net.Mime;
+    using Postman.Interfaces;
     using Xunit;
 
     /// <summary>
@@ -53,9 +54,9 @@
             Assert.Contains(expectedPlainContent, actualContent);
         }
 
-        ///  <summary>
-        ///  StrictEnvelope without a recipient throws
-        ///  </summary>
+        /// <summary>
+        /// StrictEnvelope without a recipient throws
+        /// </summary>
         [Fact]
         public void StrictEnvelope_NoRecipient_Throws()
         {
@@ -81,9 +82,9 @@
             Assert.Equal("list of recipients is empty", ex.Message);
         }
 
-        ///  <summary>
-        ///  StrictEnvelope without a sender throws
-        ///  </summary>
+        /// <summary>
+        /// StrictEnvelope without a sender throws
+        /// </summary>
         [Fact]
         public void StrictEnvelope_NoSender_Throws()
         {
@@ -109,9 +110,9 @@
             Assert.Equal("sender is Nothing", ex.Message);
         }
 
-        ///  <summary>
-        ///  StrictEnvelope without a subject throws
-        ///  </summary>
+        /// <summary>
+        /// StrictEnvelope without a subject throws
+        /// </summary>
         [Fact]
         public void StrictEnvelope_NoSubject_Throws()
         {

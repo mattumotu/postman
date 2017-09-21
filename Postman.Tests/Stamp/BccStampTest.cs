@@ -1,6 +1,7 @@
 ﻿namespace Postman.Tests
 {
     using System.Net.Mail;
+    using Postman.Interfaces;
     using Postman.Stamp;
     using Xunit;
 
