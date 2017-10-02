@@ -48,6 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmbeddedResource\EmbeddedResourceTest.cs" />
     <Compile Include="Envelope\StrictEnvelopeTest.cs" />
     <Compile Include="Stamp\BccStampTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
