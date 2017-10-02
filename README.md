@@ -68,4 +68,3 @@ Dim postman As IPostman = New Postman("my.smtp.host")
 ' Send Envelope
 postman.Send(exampleEnv)
 ```
-</example>
