@@ -1,3 +1,5 @@
+# Postman
+
 ![Postman Logo](https://raw.githubusercontent.com/mattumotu/postman/master/postman.png "Postman Logo")
 
 Postman is a C#.Net implementation of the wonderful [jcabi-email](https://github.com/jcabi/jcabi-email) created by [Yegor Bugayenko](https://github.com/yegor256)
@@ -7,6 +9,12 @@ More details are here: [email.jcabi.com](http://email.jcabi.com/).
 [![Coverage Status](https://img.shields.io/coveralls/mattumotu/postman/master.svg?maxAge=3600)](https://coveralls.io/github/mattumotu/postman?branch=master)
 [![NuGet](https://img.shields.io/nuget/v/postman.svg)](https://www.nuget.org/packages/Postman/)
 
+Installation
+---
+Via NuGet
+
+    PM> Install-Package Postman
+    
 Usage
 -----
 
