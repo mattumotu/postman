@@ -15,6 +15,8 @@ init:
         write-host "This gets the version nr from the end of the git release branch (e.g.: v1.4). And updates the appVersion build version with that (the build nr is appended)."
 
         $branch=$env:APPVEYOR_REPO_BRANCH
+        
+        write-host "Branch is $branch"
     
         $posAfterVchar = $branch.LastIndexOf("v") + 1
         $versionLength = $branch.Length - $posAfterVchar
