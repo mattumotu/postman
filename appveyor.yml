@@ -9,6 +9,26 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: +rUCy9KXXcle8NAytgkaGdE9kO6vXawtJVMy6QPCjnrWbgjd3lyQ5D9vBh2LDDOr
 
+init:
+  - ps: |
+      function gitVersion(){
+        write-host "This gets the version nr from the end of the git release branch (e.g.: v1.4). And updates the appVersion build version with that (the build nr is appended)."
+
+        $branch=$env:APPVEYOR_REPO_BRANCH
+    
+        $posAfterVchar = $branch.LastIndexOf("v") + 1
+        $versionLength = $branch.Length - $posAfterVchar
+        
+        $gitVersion=$branch.substring($posAfterVchar, $versionLength)
+        
+        $newVersion="$gitVersion.$env:APPVEYOR_BUILD_NUMBER"
+        
+        write-host "Update appveyor build version to:$newVersion"
+        $env:appveyor_build_version="$newVersion"
+        appveyor UpdateBuild -Version "$newVersion"
+      }
+      gitVersion
+      
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
