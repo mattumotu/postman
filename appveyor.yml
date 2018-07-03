@@ -17,6 +17,8 @@ init:
         $branch=$env:APPVEYOR_REPO_BRANCH
         
         write-host "Branch is $branch"
+        $tag=$env:APPVEYOR_REPO_TAG_NAME
+        write-host "Tag is $tag"
     
         $posAfterVchar = $branch.LastIndexOf("v") + 1
         $versionLength = $branch.Length - $posAfterVchar
