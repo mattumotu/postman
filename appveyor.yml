@@ -27,6 +27,7 @@ before_build:
 build:
   project: Postman.sln
   verbosity: minimal
+  publish_nuget: true
 
 test_script:
   - ps: Write-Host "Building version:$env:appveyor_build_version"
