@@ -9,6 +9,13 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: +rUCy9KXXcle8NAytgkaGdE9kO6vXawtJVMy6QPCjnrWbgjd3lyQ5D9vBh2LDDOr
 
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+  
 configuration: Release
 
 before_build:
