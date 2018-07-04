@@ -8,7 +8,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Postman")]
 [assembly: AssemblyDescription("a light weight, object-oriented .Net SDK for sending emails")]
 [assembly: AssemblyConfiguration("Release")]
-[assembly: AssemblyCompany("DDTS")]
 [assembly: AssemblyProduct("Postman")]
 [assembly: AssemblyCopyright("Copyright © 2017, Matt Phillips")]
 [assembly: AssemblyTrademark("")]
