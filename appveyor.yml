@@ -17,7 +17,7 @@ init:
       function updateVersionFromTag(){
         $tag=$env:APPVEYOR_REPO_TAG_NAME
         write-host "Tag is '$tag'"
-        if(!$tag) {
+        if($tag) {
           $posAfterVchar = $tag.LastIndexOf("v") + 1
           $versionLength = $tag.Length - $posAfterVchar
 
