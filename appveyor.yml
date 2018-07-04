@@ -8,11 +8,6 @@ branches:
 environment:
   COVERALLS_REPO_TOKEN:
     secure: +rUCy9KXXcle8NAytgkaGdE9kO6vXawtJVMy6QPCjnrWbgjd3lyQ5D9vBh2LDDOr
-  GH_REPO_NAME: postman
-  DOXYFILE: $env:APPVEYOR_BUILD_FOLDER/doxygen.cfg
-  GH_REPO_REF: github.com/mattumotu/postman.git
-  TRAVIS_BUILD_NUMBER: APPVEYOR_BUILD_NUMBER
-  TRAVIS_COMMIT: APPVEYOR_REPO_COMMIT
  
 configuration: Release
 
@@ -67,6 +62,3 @@ deploy:
     artifact: /.*\.nupkg/
     on:
       appveyor_repo_tag: true
-
-after_deploy:
-  - ps: Write-Host "After deploy called"

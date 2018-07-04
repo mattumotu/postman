@@ -5,7 +5,8 @@ sudo: false
 branches:
   only:
     - master
-    - xUnit
+
+if: tag IS present
 
 # Environment variables
 env:
