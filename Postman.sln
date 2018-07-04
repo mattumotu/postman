@@ -3,10 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3670BE15-732C-4AB7-97E4-65F79C133E87}"
 	ProjectSection(SolutionItems) = preProject
-		.tfignore = .tfignore
+		.travis.yml = .travis.yml
+		_config.yml = _config.yml
+		appveyor.yml = appveyor.yml
 		doxygen.cfg = doxygen.cfg
-		index.md = index.md
+		generateDocumentationAndDeploy.sh = generateDocumentationAndDeploy.sh
+		LICENSE = LICENSE
 		namespaces.dox = namespaces.dox
+		Postman.nuspec = Postman.nuspec
+		postman.png = postman.png
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postman", "Postman\Postman.csproj", "{57E1AEA9-EFB2-48A3-A565-7024B25021EA}"
