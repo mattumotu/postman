@@ -16,22 +16,21 @@ init:
   - ps: |
       function updateVersionFromTag(){
         $tag=$env:APPVEYOR_REPO_TAG_NAME
-        write-host "Tag is $tag"
-    
-        $posAfterVchar = $tag.LastIndexOf("v") + 1
-        $versionLength = $tag.Length - $posAfterVchar
-        
-        $gitVersion=$tag.substring($posAfterVchar, $versionLength)
-        
-        $newVersion="$gitVersion.$env:APPVEYOR_BUILD_NUMBER"
-        
-        write-host "Update appveyor build version to:$newVersion"
-        $env:appveyor_build_version="$newVersion"
-        appveyor UpdateBuild -Version "$newVersion"
+        write-host "Tag is '$tag'"
+        if(!$tag) {
+          $posAfterVchar = $tag.LastIndexOf("v") + 1
+          $versionLength = $tag.Length - $posAfterVchar
+
+          $gitVersion=$tag.substring($posAfterVchar, $versionLength)
+
+          $newVersion="$gitVersion.$env:APPVEYOR_BUILD_NUMBER"
+
+          write-host "Update appveyor build version to:$newVersion"
+          $env:appveyor_build_version="$newVersion"
+          appveyor UpdateBuild -Version "$newVersion"
+        }
       }
-      updateVersionFromTag
-    on:
-      appveyor_repo_tag: true
+      updateVersionFromTag()
 
 assembly_info:
   patch: true
