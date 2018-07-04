@@ -55,5 +55,5 @@ build:
 
 test_script:
   - ps: Write-Host "Building version:$env:appveyor_build_version"
-  - ps: .\tools\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"./tools/xunit.runners.1.9.2/tools/xunit.console.clr4.exe" -targetargs:"./Postman.Tests/bin/$(configuration)/Postman.Tests.dll /noshadow"   -filter:"+[Postman*]*" -output:opencoverCoverage.xml
+  - ps: .\tools\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"./tools/xunit.runners.1.9.2/tools/xunit.console.clr4.exe" -targetargs:"./Postman.Tests/bin/$env:CONFIGURATION/Postman.Tests.dll /noshadow"   -filter:"+[Postman*]*" -output:opencoverCoverage.xml
   - ps: .\tools\coveralls.net.0.412\tools\csmacnz.Coveralls.exe --opencover -i opencoverCoverage.xml --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_BUILD_NUMBER --serviceName appveyor
