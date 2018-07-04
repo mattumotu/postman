@@ -9,6 +9,30 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: +rUCy9KXXcle8NAytgkaGdE9kO6vXawtJVMy6QPCjnrWbgjd3lyQ5D9vBh2LDDOr
       
+ 
+configuration: Release
+
+init:
+  - ps: |
+      function updateVersionFromTag(){
+        $tag=$env:APPVEYOR_REPO_TAG_NAME
+        write-host "Tag is $tag"
+    
+        $posAfterVchar = $tag.LastIndexOf("v") + 1
+        $versionLength = $tag.Length - $posAfterVchar
+        
+        $gitVersion=$tag.substring($posAfterVchar, $versionLength)
+        
+        $newVersion="$gitVersion.$env:APPVEYOR_BUILD_NUMBER"
+        
+        write-host "Update appveyor build version to:$newVersion"
+        $env:appveyor_build_version="$newVersion"
+        appveyor UpdateBuild -Version "$newVersion"
+      }
+      updateVersionFromTag
+    on:
+      appveyor_repo_tag: true
+
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
@@ -16,29 +40,6 @@ assembly_info:
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
   
-configuration: Release
-
-init:
-  - ps: |
-      function updateVersionFromTag(){
-        $branch=$env:APPVEYOR_REPO_BRANCH
-        
-        write-host "Branch is $branch"
-        $tag=$env:APPVEYOR_REPO_TAG_NAME
-        write-host "Tag is $tag"
-    
-        $posAfterVchar = $branch.LastIndexOf("v") + 1
-        $versionLength = $branch.Length - $posAfterVchar
-        
-        $gitVersion=$branch.substring($posAfterVchar, $versionLength)
-        
-        $newVersion="$gitVersion.$env:APPVEYOR_BUILD_NUMBER"
-        
-        #write-host "Update appveyor build version to:$newVersion"
-        #$env:appveyor_build_version="$newVersion"
-        #appveyor UpdateBuild -Version "$newVersion"
-      }
-
 before_build:
 - nuget restore Postman.sln
 
@@ -54,3 +55,12 @@ test_script:
   - ps: .\tools\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"./tools/xunit.runners.1.9.2/tools/xunit.console.clr4.exe" -targetargs:"./Postman.Tests/bin/$env:CONFIGURATION/Postman.Tests.dll /noshadow"   -filter:"+[Postman*]*" -output:opencoverCoverage.xml
   - nuget install coveralls.net -Version 0.412.0 -OutputDirectory tools
   - ps: .\tools\coveralls.net.0.412\tools\csmacnz.Coveralls.exe --opencover -i opencoverCoverage.xml --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_BUILD_NUMBER --serviceName appveyor
+
+deploy:
+  - provider: NuGet
+    api_key:
+      secure: rU0RM/K3kY0g80VVfmvE4BwPCrhLiiohnaRMog4fYuO7W1IJsPqA3VP4zxapdD4Q
+    skip_symbols: true
+    artifact: /.*\.nupkg/
+    on:
+      appveyor_repo_tag: true
