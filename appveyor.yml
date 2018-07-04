@@ -18,6 +18,27 @@ assembly_info:
   
 configuration: Release
 
+init:
+  - ps: |
+      function updateVersionFromTag(){
+        $branch=$env:APPVEYOR_REPO_BRANCH
+        
+        write-host "Branch is $branch"
+        $tag=$env:APPVEYOR_REPO_TAG_NAME
+        write-host "Tag is $tag"
+    
+        $posAfterVchar = $branch.LastIndexOf("v") + 1
+        $versionLength = $branch.Length - $posAfterVchar
+        
+        $gitVersion=$branch.substring($posAfterVchar, $versionLength)
+        
+        $newVersion="$gitVersion.$env:APPVEYOR_BUILD_NUMBER"
+        
+        #write-host "Update appveyor build version to:$newVersion"
+        #$env:appveyor_build_version="$newVersion"
+        #appveyor UpdateBuild -Version "$newVersion"
+      }
+
 before_build:
 - nuget restore Postman.sln
 
