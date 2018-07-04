@@ -30,7 +30,7 @@ init:
           appveyor UpdateBuild -Version "$newVersion"
         }
       }
-      updateVersionFromTag()
+      updateVersionFromTag
 
 assembly_info:
   patch: true
