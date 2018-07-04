@@ -8,30 +8,6 @@ branches:
 environment:
   COVERALLS_REPO_TOKEN:
     secure: +rUCy9KXXcle8NAytgkaGdE9kO6vXawtJVMy6QPCjnrWbgjd3lyQ5D9vBh2LDDOr
-
-init:
-  - ps: |
-      function gitVersion(){
-        write-host "This gets the version nr from the end of the git release branch (e.g.: v1.4). And updates the appVersion build version with that (the build nr is appended)."
-
-        $branch=$env:APPVEYOR_REPO_BRANCH
-        
-        write-host "Branch is $branch"
-        $tag=$env:APPVEYOR_REPO_TAG_NAME
-        write-host "Tag is $tag"
-    
-        $posAfterVchar = $branch.LastIndexOf("v") + 1
-        $versionLength = $branch.Length - $posAfterVchar
-        
-        $gitVersion=$branch.substring($posAfterVchar, $versionLength)
-        
-        $newVersion="$gitVersion.$env:APPVEYOR_BUILD_NUMBER"
-        
-        #write-host "Update appveyor build version to:$newVersion"
-        #$env:appveyor_build_version="$newVersion"
-        #appveyor UpdateBuild -Version "$newVersion"
-      }
-      gitVersion
       
 assembly_info:
   patch: true
@@ -44,9 +20,6 @@ configuration: Release
 
 before_build:
 - nuget restore Postman.sln
-- nuget install xunit.runners -Version 1.9.2 -OutputDirectory tools
-- nuget install OpenCover -Version 4.6.519 -OutputDirectory tools
-- nuget install coveralls.net -Version 0.412.0 -OutputDirectory tools
 
 build:
   project: Postman.sln
@@ -55,5 +28,8 @@ build:
 
 test_script:
   - ps: Write-Host "Building version:$env:appveyor_build_version"
+  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory tools
+  - nuget install OpenCover -Version 4.6.519 -OutputDirectory tools
   - ps: .\tools\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"./tools/xunit.runners.1.9.2/tools/xunit.console.clr4.exe" -targetargs:"./Postman.Tests/bin/$env:CONFIGURATION/Postman.Tests.dll /noshadow"   -filter:"+[Postman*]*" -output:opencoverCoverage.xml
+  - nuget install coveralls.net -Version 0.412.0 -OutputDirectory tools
   - ps: .\tools\coveralls.net.0.412\tools\csmacnz.Coveralls.exe --opencover -i opencoverCoverage.xml --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_BUILD_NUMBER --serviceName appveyor
