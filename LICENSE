@@ -2,7 +2,6 @@ BSD 3-Clause License
 
 Copyright (c) 2017, Matt Phillips
 All rights reserved.
-Postman is a C#.Net implementation of the wonderful jcabi-email (https://github.com/jcabi/jcabi-email) created by Yegor Bugayenko (https://github.com/yegor256)
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
