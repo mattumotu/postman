@@ -47,7 +47,6 @@ build:
   publish_nuget: true
 
 test_script:
-  - ps: Write-Host "Building version:$env:appveyor_build_version"
   - nuget install xunit.runners -Version 1.9.2 -OutputDirectory tools
   - nuget install OpenCover -Version 4.6.519 -OutputDirectory tools
   - ps: .\tools\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"./tools/xunit.runners.1.9.2/tools/xunit.console.clr4.exe" -targetargs:"./Postman.Tests/bin/$env:CONFIGURATION/Postman.Tests.dll /noshadow"   -filter:"+[Postman*]*" -output:opencoverCoverage.xml
