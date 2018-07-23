@@ -11,7 +11,7 @@
         /// <summary>
         /// Holds the email collection
         /// </summary>
-        private MailAddressCollection emailCollection = new MailAddressCollection();
+        private readonly MailAddressCollection emailCollection = new MailAddressCollection();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Cc" /> class.
