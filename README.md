@@ -7,6 +7,7 @@ More details are here: [email.jcabi.com](http://email.jcabi.com/).
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/mattumotu/postman.svg?maxAge=3600)](https://ci.appveyor.com/project/mattumotu/postman)
 [![Coverage Status](https://img.shields.io/coveralls/mattumotu/postman/master.svg?maxAge=3600)](https://coveralls.io/github/mattumotu/postman?branch=master)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=postman&metric=alert_status)](https://sonarcloud.io/dashboard?id=postman)
 [![NuGet](https://img.shields.io/nuget/v/postman.svg)](https://www.nuget.org/packages/Postman/)
 
 Installation
