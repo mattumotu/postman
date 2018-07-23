@@ -14,7 +14,7 @@
         /// <summary>
         /// Holds the HTML text
         /// </summary>
-        private string text;
+        private readonly string text;
 
         /// <summary>
         /// Holds the embedded resources
