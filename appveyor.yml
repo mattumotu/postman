@@ -8,7 +8,9 @@ branches:
 environment:
   COVERALLS_REPO_TOKEN:
     secure: +rUCy9KXXcle8NAytgkaGdE9kO6vXawtJVMy6QPCjnrWbgjd3lyQ5D9vBh2LDDOr
- 
+  SONAR_TOKEN:
+    secure: o9IMoZXYciU4XgrAZoeWiG+VMTWfiptJXhSZL7yixSe7onmJRikTron/UIj5pbuC
+
 configuration: Release
 
 init:
@@ -30,6 +32,7 @@ init:
         }
       }
       updateVersionFromTag
+  - choco install "msbuild-sonarqube-runner" -y
 
 assembly_info:
   patch: true
@@ -40,26 +43,22 @@ assembly_info:
   
 before_build:
 - nuget restore src\Postman.sln
+- SonarScanner.MSBuild.exe begin /k:"postman" /d:sonar.organization="mattumotu-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="310795dd03e9b5bcb51933c673f3e3663c102f9a"
 
 build:
   project: src\Postman.sln
   verbosity: minimal
   publish_nuget: true
 
-build_script:
-  - choco install "msbuild-sonarqube-runner" -y
-  - SonarScanner.MSBuild.exe begin /k:"postman" /d:sonar.organization="mattumotu-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="310795dd03e9b5bcb51933c673f3e3663c102f9a"
-  - MsBuild.exe "src\Postman.sln" /t:Rebuild
-  #- msbuild "src\Postman.sln"
-  #- MSBuild.SonarQube.Runner.exe end /d:sonar.login="310795dd03e9b5bcb51933c673f3e3663c102f9a"
-  - SonarScanner.MSBuild.exe end /d:sonar.login="cd83cb84042a6fe5a64751a14d45144bb682715b"
-  
 test_script:
   - nuget install xunit.runners -Version 1.9.2 -OutputDirectory tools
   - nuget install OpenCover -Version 4.6.519 -OutputDirectory tools
   - ps: .\tools\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"./tools/xunit.runners.1.9.2/tools/xunit.console.clr4.exe" -targetargs:"src/Postman.Tests/bin/$env:CONFIGURATION/Postman.Tests.dll /noshadow"   -filter:"+[Postman*]*" -output:opencoverCoverage.xml
   - nuget install coveralls.net -Version 0.412.0 -OutputDirectory tools
   - ps: .\tools\coveralls.net.0.412\tools\csmacnz.Coveralls.exe --opencover -i opencoverCoverage.xml --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_BUILD_NUMBER --serviceName appveyor
+
+after_test:
+  - SonarScanner.MSBuild.exe end /d:sonar.login="$env:SONAR_TOKEN"
 
 deploy:
   - provider: NuGet
