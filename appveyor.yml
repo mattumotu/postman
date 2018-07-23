@@ -48,9 +48,11 @@ build:
 
 build_script:
   - choco install "msbuild-sonarqube-runner" -y
-  - MSBuild.SonarQube.Runner.exe begin /k:"postman" /d:sonar.organization="mattumotu-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="310795dd03e9b5bcb51933c673f3e3663c102f9a"
-  - msbuild "src\Postman.sln"
-  - MSBuild.SonarQube.Runner.exe end /d:sonar.login="310795dd03e9b5bcb51933c673f3e3663c102f9a"
+  - SonarScanner.MSBuild.exe begin /k:"postman" /d:sonar.organization="mattumotu-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="310795dd03e9b5bcb51933c673f3e3663c102f9a"
+  - MsBuild.exe /t:Rebuild
+  #- msbuild "src\Postman.sln"
+  #- MSBuild.SonarQube.Runner.exe end /d:sonar.login="310795dd03e9b5bcb51933c673f3e3663c102f9a"
+  - SonarScanner.MSBuild.exe end /d:sonar.login="cd83cb84042a6fe5a64751a14d45144bb682715b"
   
 test_script:
   - nuget install xunit.runners -Version 1.9.2 -OutputDirectory tools
