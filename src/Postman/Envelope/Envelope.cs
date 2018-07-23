@@ -13,12 +13,12 @@
         /// <summary>
         /// Holds the stamps
         /// </summary>
-        private IEnumerable<IStamp> stamps;
+        private readonly IEnumerable<IStamp> stamps;
 
         /// <summary>
         /// Holds the enclosures
         /// </summary>
-        private IEnumerable<IEnclosure> enclosures;
+        private readonly IEnumerable<IEnclosure> enclosures;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Envelope" /> class with the specified <see cref="IStamp"/>s and <see cref="IEnclosure"/>s.
