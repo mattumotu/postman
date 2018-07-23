@@ -12,7 +12,7 @@
         /// <summary>
         /// Holds the plain text
         /// </summary>
-        private string text;
+        private readonly string text;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Plain" /> class.

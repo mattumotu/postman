@@ -13,7 +13,7 @@
         /// <summary>
         /// Holds the resource
         /// </summary>
-        private LinkedResource res;
+        private readonly LinkedResource res;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddedResource" /> class.

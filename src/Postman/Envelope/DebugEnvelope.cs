@@ -12,8 +12,8 @@
     /// </summary>
     public class DebugEnvelope : IEnvelope
     {
-        private IEnvelope origin;
-        private string recipient;
+        private readonly IEnvelope origin;
+        private readonly string recipient;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DebugEnvelope" /> class with the specified <see cref="IEnvelope"/> origin and recipient.

@@ -11,7 +11,7 @@
         /// <summary>
         /// Hold the subject
         /// </summary>
-        private string subject;
+        private readonly string subject;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Subject" /> class.

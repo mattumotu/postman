@@ -11,7 +11,7 @@
         /// <summary>
         /// Holds the attachment
         /// </summary>
-        private Attachment att;
+        private readonly Attachment att;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Attached" /> class.

@@ -11,7 +11,7 @@
         /// <summary>
         /// Holds the sender
         /// </summary>
-        private MailAddress email;
+        private readonly MailAddress email;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Sender" /> class with the specified address(es)
