@@ -44,8 +44,8 @@ assembly_info:
   
 before_build:
 - nuget restore src\Postman.sln
-- ps: SonarScanner.MSBuild.exe begin /k:"postman" /d:sonar.organization="mattumotu-github" /d:sonar.host.url="https://sonarcloud.io" /d:"sonar.login=$env:SONAR_TOKEN"
-
+- ps: SonarScanner.MSBuild.exe begin /k:"postman" /d:sonar.organization="mattumotu-github" /d:sonar.host.url="https://sonarcloud.io" /d:"sonar.login=c7a1b0c208a442008aa9ef733afb6427dc8c47ff"
+ #/d:"sonar.login=$env:sonar_token" /d:"sonar.branch=$env:APPVEYOR_REPO_BRANCH" /d:sonar.cs.opencover.reportsPaths=".\MyProject_coverage.xml" /d:sonar.cs.nunit.reportsPaths="nunitTestResult.xml" /d:"sonar.cpd.exclusions=**/*Tests.cs"  /d:"sonar.language=cs"
 build:
   project: src\Postman.sln
   verbosity: minimal
@@ -59,7 +59,7 @@ test_script:
   - ps: .\tools\coveralls.net.0.412\tools\csmacnz.Coveralls.exe --opencover -i opencoverCoverage.xml --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_BUILD_NUMBER --serviceName appveyor
 
 after_test:
-  - SonarScanner.MSBuild.exe end /d:sonar.login="$env:SONAR_TOKEN"
+  - SonarScanner.MSBuild.exe end /d:sonar.login="c7a1b0c208a442008aa9ef733afb6427dc8c47ff"
 
 deploy:
   - provider: NuGet
