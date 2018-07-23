@@ -12,7 +12,7 @@
         /// <summary>
         /// Holds the origin envelope
         /// </summary>
-        private IEnvelope orgin;
+        private readonly IEnvelope orgin;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StrictEnvelope" /> class decorating the specified origin <see cref="IEnvelope"/>.
