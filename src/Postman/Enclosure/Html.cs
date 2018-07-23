@@ -19,7 +19,7 @@
         /// <summary>
         /// Holds the embedded resources
         /// </summary>
-        private IEnumerable<IEmbeddedResource> embeddedResList;
+        private readonly IEnumerable<IEmbeddedResource> embeddedResList;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Html" /> class.
