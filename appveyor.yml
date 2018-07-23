@@ -46,6 +46,12 @@ build:
   verbosity: minimal
   publish_nuget: true
 
+build_script:
+  - choco install "msbuild-sonarqube-runner" -y
+  - MSBuild.SonarQube.Runner.exe begin /k:"postman" /d:sonar.organization="mattumotu-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="310795dd03e9b5bcb51933c673f3e3663c102f9a"
+  - msbuild "src\Postman.sln"
+  - MSBuild.SonarQube.Runner.exe end /d:sonar.login="310795dd03e9b5bcb51933c673f3e3663c102f9a"
+  
 test_script:
   - nuget install xunit.runners -Version 1.9.2 -OutputDirectory tools
   - nuget install OpenCover -Version 4.6.519 -OutputDirectory tools
