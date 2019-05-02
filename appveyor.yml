@@ -43,7 +43,7 @@ assembly_info:
   
 before_build:
 - nuget restore src\Postman.sln
-- SonarScanner.MSBuild.exe begin /k:"postman" /d:sonar.organization="mattumotu-github" /d:sonar.host.url="https://sonarcloud.io" /d:"sonar.login=c7a1b0c208a442008aa9ef733afb6427dc8c47ff" /d:sonar.cs.opencover.reportsPaths="opencoverCoverage.xml" /d:sonar.cs.xunit.reportsPaths="xunitTestResult.xml"
+- SonarScanner.MSBuild.exe begin /k:"postman" /o:"mattumotu-github" /d:sonar.host.url="https://sonarcloud.io" /d:"sonar.login=c7a1b0c208a442008aa9ef733afb6427dc8c47ff" /d:sonar.cs.opencover.reportsPaths="opencoverCoverage.xml" /d:sonar.cs.xunit.reportsPaths="xunitTestResult.xml"
 
 build:
   project: src\Postman.sln
